@@ -40,3 +40,41 @@ Built by Soundarya as part of an ongoing series of single-file, botanical-dark c
 License
 
 MIT
+
+# The Nine-Hour Overlap (v2)
+
+## Description
+Pick any two cities and see when both people are awake and at work. v1 covered one pair of time zones. v2 works for any two places, ranks the best meeting windows, and gives you a link and a ready-to-paste invite.
+
+## Visuals
+Two 30-minute strips show one day for each city, coloured by how close each hour is to that person's working day. An amber outline marks the suggested window. Drag across the strips to compare local times at any moment.
+
+## Installation
+None. It is one HTML file with no build step. Open `nine-hour-overlap-v2.html` in a browser. Fonts (Fraunces, Inter, IBM Plex Mono) load from Google Fonts and fall back to system fonts offline.
+
+## Usage
+1. Type two cities. Type an IANA zone such as `Asia/Tokyo` for anywhere not on the list.
+2. Choose the date, call length (30 min to 2 h), and working hours. Use "Set working hours for each city" when the two people keep different schedules.
+3. Read the best window. If nobody shares working hours, it falls back to the least painful option and says who is early or late.
+4. Click "Copy link" to share the same settings, or "Copy invite text" for a plain-text summary.
+
+How windows are ranked: each half hour gets a level per city (0 in working hours, 1 up to an hour outside, 2 one to three hours outside, 3 beyond that or between 11 pm and 6 am). The tool takes the lowest tier that has a run long enough for the call.
+
+Share link settings live in the URL fragment: `a`, `b` (cities), `len` (minutes), `h` (hours as `9-18,9-18`), `c` (12 or 24), and optional `d` (pinned date).
+
+## Support
+Daylight saving is handled by the browser's Intl time zone data for the chosen date. If a city looks off, check that date first. The tool warns when a clock change falls within three weeks of it.
+
+## Roadmap
+- A third and fourth city
+- Save favourite pairs
+- Calendar file download for the suggested window
+
+## Contributing
+Single-file, vanilla JS. Keep it dependency-free.
+
+## Authors and acknowledgment
+Built with Claude for Soundarya.
+
+## Project status
+v2 shipped. v1 was the fixed-pair version.
